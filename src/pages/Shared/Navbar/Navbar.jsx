@@ -9,7 +9,7 @@ const Navbar = () => {
         <li><NavLink to='aboutUs'>About Us</NavLink></li>
         <li><NavLink to='coverage'>coverage</NavLink></li>
         <li><NavLink to='raider'>Be a Raider</NavLink></li>
-        <li><NavLink to='raider'</NavLink></li>
+        <li><NavLink to='send-parcel'>Send Parcel</NavLink></li>
     </>
 
     const { user, logOut } = UseAuth();
