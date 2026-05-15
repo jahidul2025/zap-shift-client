@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form";
 import UseAuth from "../../../hooks/UseAuth";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import axios from "axios";
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const { registerUser, updateUserProfile } = UseAuth();
 
@@ -30,6 +32,7 @@ const Register = () => {
                         updateUserProfile(userProfile)
                         .then(()=>{
                             console.log('user profile updated');
+                            navigate(location.state || '/')
                         })
                         .catch(error => {
                                 console.log(error);
@@ -92,7 +95,7 @@ const Register = () => {
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button className="btn btn-neutral mt-4">Register</button>
                 </fieldset>
-                <p>Already have an account? <Link className="text-blue-800 underline" to='/login'>login</Link></p>
+                <p>Already have an account? <Link className="text-blue-800 underline" state={location.state} to='/login'>login</Link></p>
             </form>
             <SocialLogin></SocialLogin>
         </div>

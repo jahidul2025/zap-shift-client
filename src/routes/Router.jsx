@@ -12,6 +12,8 @@ import Services from "../pages/Services/Services";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
+import PrivetRoute from "./PrivetRoute";
+import Raider from "../pages/Raider/Raider";
 
 export const router = createBrowserRouter([
   {
@@ -49,20 +51,24 @@ export const router = createBrowserRouter([
         Component: Services
       },
       {
+        path: 'raider',
+        element: <PrivetRoute><Raider></Raider></PrivetRoute>
+      },
+      {
         path: 'coverage',
         Component: Coverage,
         loader: () => fetch('/warehouses.json').then(res => res.json())
       },
       {
         path: '*',
-        Component:NotFound
+        Component: NotFound
       }
     ]
   },
   {
     path: '/',
     Component: AuthLayout,
-    children:[
+    children: [
       {
         path: 'login',
         Component: Login

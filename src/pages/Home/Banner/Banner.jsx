@@ -4,8 +4,12 @@ import bannerimg1 from '../../../assets/banner/banner1.png';
 import bannerimg2 from '../../../assets/banner/banner2.png';
 import bannerimg3 from '../../../assets/banner/banner3.png';
 import { FaArrowUp } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Banner = () => {
+    const links = <Link to="/raider" className="border border-black px-6 py-2 font-bold btn rounded-full">
+        Be a Raider
+    </Link>
     return (
         <div>
             <Carousel infiniteLoop={true} autoPlay={true} >
@@ -19,9 +23,9 @@ const Banner = () => {
                                 </button>
                             </div>
 
-                            <button className="border border-black px-6 py-2 font-bold btn  rounded-full">
-                                Be A Rider
-                            </button>
+                            {
+                                links
+                            }
                         </div>
                     </div>
                 </div>
@@ -35,9 +39,9 @@ const Banner = () => {
                                 </button>
                             </div>
 
-                            <button className="border border-black px-6 py-2 font-bold btn  rounded-full">
-                                Be A Rider
-                            </button>
+                            {
+                                links
+                            }
                         </div>
                     </div>
                 </div>
@@ -51,9 +55,9 @@ const Banner = () => {
                                 </button>
                             </div>
 
-                            <button className="border border-black px-6 py-2 font-bold btn  rounded-full">
-                                Be A Rider
-                            </button>
+                            {
+                                links
+                            }
                         </div>
                     </div>
                 </div>

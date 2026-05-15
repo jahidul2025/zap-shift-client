@@ -8,6 +8,7 @@ const Navbar = () => {
         <li><NavLink to='services'>services</NavLink></li>
         <li><NavLink to='aboutUs'>About Us</NavLink></li>
         <li><NavLink to='coverage'>coverage</NavLink></li>
+        <li><NavLink to='raider'>Be a Raider</NavLink></li>
     </>
 
     const { user, logOut } = UseAuth();
@@ -41,7 +42,7 @@ const Navbar = () => {
                         user ? <a onClick={handleLogout} className="btn">logout</a>
                             : <Link className="btn" to="/login">Log in</Link>
                     }
-                    <Link className="btn btn-primary text-black" to="/">Be a Raider</Link>
+                    
                 </div>
             </div>
 
