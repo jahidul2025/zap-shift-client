@@ -1,10 +1,19 @@
 import { useForm, useWatch } from "react-hook-form";
 import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxioesSecure";
+import UseAuth from "../../hooks/UseAuth";
 
 const SendParcel = () => {
 
-    const { register, handleSubmit, control, formState: { errors } } = useForm();
+    const { register, handleSubmit, control,
+        // formState: { errors }
+    } = useForm();
+    const { user } = UseAuth();
+    const axiosSecure = useAxiosSecure();
+
+
+
     const warehouseCenters = useLoaderData();
     const regionsDuplicate = warehouseCenters.map(c => c.region);
     const regions = [...new Set(regionsDuplicate)];
@@ -53,11 +62,25 @@ const SendParcel = () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "I Agree"
         }).then((result) => {
-            if (result.isConfirmed) Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-            });
+            if (result.isConfirmed) {
+                axiosSecure.post('/parcels', data)
+                    .then(res => {
+                        console.log('after saving the parcel', res.data);
+                        // Swal.fire({
+                        //     title: "Success!",
+                        //     text: "Your parcel has been sent.",
+                        //     icon: "success"
+                        // });
+                    })
+                // .catch(err => {
+                //     console.log(err);
+                //     Swal.fire({
+                //         title: "Error!",
+                //         text: "Failed to send parcel.",
+                //         icon: "error"
+                //     });
+                // });
+            }
         });
 
     }
@@ -95,10 +118,14 @@ const SendParcel = () => {
                         <h3 className="text-2xl font-semibold mt-4">Sender Details</h3>
                         {/* sender Name */}
                         <label className="label mt-4 ">Sender Name</label>
-                        <input type="text" className="input w-full" {...register('senderName')} placeholder="Sender Name" />
+                        <input type="text" className="input w-full" {...register('senderName')}
+                        defaultValue={user?.displayName}
+                        placeholder="Sender Name" />
                         {/* sender email */}
                         <label className="label mt-4 ">Sender Email</label>
-                        <input type="email" className="input w-full" {...register('senderEmail')} placeholder="Sender Email" />
+                        <input type="email" className="input w-full" {...register('senderEmail')}
+                        defaultValue={user?.email}
+                        placeholder="Sender Email" />
 
                         {/* sender region */}
                         <fieldset className="fieldset">

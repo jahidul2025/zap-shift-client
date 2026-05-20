@@ -3,6 +3,8 @@ import Logo from "../../../components/Logo/Logo";
 import UseAuth from "../../../hooks/UseAuth";
 
 const Navbar = () => {
+    const { user, logOut } = UseAuth();
+
     const links = <>
         {/* <li><NavLink to='/'>Home</NavLink></li> */}
         <li><NavLink to='services'>services</NavLink></li>
@@ -10,9 +12,13 @@ const Navbar = () => {
         <li><NavLink to='coverage'>coverage</NavLink></li>
         <li><NavLink to='raider'>Be a Raider</NavLink></li>
         <li><NavLink to='send-parcel'>Send Parcel</NavLink></li>
-    </>
 
-    const { user, logOut } = UseAuth();
+        {
+            user && <>
+                <li><NavLink to='/dashboard/my-parcels'>my Parcels</NavLink></li>
+            </>
+        }
+    </>
 
     const handleLogout = () => {
         logOut()
@@ -43,7 +49,7 @@ const Navbar = () => {
                         user ? <a onClick={handleLogout} className="btn">logout</a>
                             : <Link className="btn" to="/login">Log in</Link>
                     }
-                    
+
                 </div>
             </div>
 
