@@ -62,14 +62,12 @@ const Register = () => {
                         photo is required
                     </p>}
 
-
                     {/* email */}
                     <label className="label">Email</label>
                     <input type="email" className="input" {...register('email', { required: true })} placeholder="Email" />
                     {errors.email?.type === 'required' && <p className="text-red-500">
                         Email is required
                     </p>}
-
 
                     {/* password */}
                     <label className="label">Password</label>
@@ -80,18 +78,13 @@ const Register = () => {
                     })} placeholder="Password" />
                     {errors.password?.type === 'required' && <p className="text-red-500">
                         Password is required
-                    </p>
-                    },
-                    {
-                        errors.password?.type === 'minLength' && <p className="text-red-500">
-                            Password must be at least 6 characters or longer
-                        </p>
-                    },
-                    {
-                        errors.password?.type === "pattern" && <p className="text-red-500">
-                            Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character
-                        </p>
-                    }
+                    </p>}
+                    {errors.password?.type === 'minLength' && <p className="text-red-500">
+                        Password must be at least 6 characters or longer
+                    </p>}
+                    {errors.password?.type === "pattern" && <p className="text-red-500">
+                        Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character
+                    </p>}
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button className="btn btn-neutral mt-4">Register</button>
                 </fieldset>
