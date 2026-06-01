@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAuth from "../../../hooks/UseAuth";
 import useAxiosSecure from "../../../hooks/useAxioesSecure";
+import { FaEdit } from "react-icons/fa";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaRegTrashCan } from "react-icons/fa6";
 
 const MyParcels = () => {
     const { user } = UseAuth();
@@ -13,7 +16,7 @@ const MyParcels = () => {
             return res.data;
         }
     });
-
+console.log(parcels);
 
     return (
         <div className="p-6">
@@ -26,32 +29,32 @@ const MyParcels = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Cost</th>
+                            <th>Payment Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                        {/* row 2 */}
-                        <tr>
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        {/* row 3 */}
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
+                        {
+                            parcels.map((parcel, index) => 
+                            <tr key={parcel._id}>
+                                <th>{index + 1}</th>
+                                <td>{parcel.parcelName}</td>
+                                <td>{parcel.cost}</td>
+                                <td>Blue</td>
+                                <button className='btn btn-square hover:bg-primary'>
+                                    <FaMagnifyingGlass />
+                                </button>
+                                <button className='btn btn-square hover:bg-primary'>
+                                    <FaEdit />
+                                </button>
+                                <button className='btn btn-square hover:bg-primary'>
+                                    <FaRegTrashCan />
+                                </button>
+                            </tr>
+                            )
+                        }
+
                     </tbody>
                 </table>
             </div>
