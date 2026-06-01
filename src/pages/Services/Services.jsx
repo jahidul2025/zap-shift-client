@@ -48,7 +48,7 @@ const Services = () => {
                     </figure>
                     <div className=" text-center">
                         <h2 className=" text-center mt-4 mb-4 font-bold text-xl">
-                           Fulfillment Solution
+                            Fulfillment Solution
                         </h2>
                         <p>We also offer customized service with inventory management support, online order processing, packaging, and after sales support.</p>
 
@@ -62,7 +62,7 @@ const Services = () => {
                     </figure>
                     <div className=" text-center">
                         <h2 className=" text-center mt-4 mb-4 font-bold text-xl">
-                           Cash on Home Delivery
+                            Cash on Home Delivery
                         </h2>
                         <p>100% cash on delivery anywhere in Bangladesh with guaranteed safety of your product.</p>
 
@@ -76,10 +76,9 @@ const Services = () => {
                     </figure>
                     <div className=" text-center">
                         <h2 className=" text-center mt-4 mb-4 font-bold text-xl">
-                           Corporate Service / Contract In Logistics
+                            Corporate Service / Contract In Logistics
                         </h2>
                         <p>Customized corporate services which includes warehouse and inventory management support.</p>
-
                     </div>
                 </div>
                 <div className="card h-[346px] items-center justify-center bg-white hover:scale-102 transition-transform duration-300 p-4 shadow-sm">
